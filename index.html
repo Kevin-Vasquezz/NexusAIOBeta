@@ -20,7 +20,6 @@
       .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
       .reveal.in{opacity:1;transform:none}
       #navshell.sc{background:rgba(5,9,18,.75);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,196,255,.16)}
-      #hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(900px 600px at 70% 30%,rgba(0,196,255,.10),transparent 60%),radial-gradient(700px 500px at 10% 90%,rgba(0,27,61,.6),transparent 60%),linear-gradient(180deg,rgba(5,5,5,.2),#050505 96%)}
       @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
       @keyframes breathe{0%,100%{box-shadow:0 0 60px rgba(0,196,255,.3),inset 0 0 40px rgba(0,196,255,.15);border-color:rgba(0,196,255,.4)}50%{box-shadow:0 0 130px rgba(0,196,255,.75),inset 0 0 80px rgba(0,196,255,.4);border-color:#00C4FF}}
       @keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
@@ -40,6 +39,7 @@
       #mob a.active{color:#00C4FF!important}
       #mob-backdrop{position:fixed;inset:0;z-index:97;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
       #mob-backdrop.open{opacity:1;pointer-events:auto}
+      #footer{background:rgba(13,28,48,.55);backdrop-filter:blur(4px);}
       .carousel-hide-scrollbar::-webkit-scrollbar{display:none}
       .carousel-hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
 
@@ -47,6 +47,7 @@
   </head>
   <body class="font-['Inter'] bg-nx-black text-[#E8EEF5] leading-relaxed antialiased overflow-x-hidden">
 
+    <canvas id="net" class="fixed inset-0 z-0 opacity-90"></canvas>
     <!-- NAV -->
     <div id="navshell" class="fixed inset-x-0 top-0 z-[100] transition-all duration-300">
       <nav class="flex items-center justify-between h-[76px] w-full px-10">
@@ -74,7 +75,6 @@
 
     <!-- HERO -->
     <header id="hero" class="relative h-[calc(110dvh-76px)] flex flex-col justify-center overflow-hidden">
-      <canvas id="net" class="absolute inset-0 z-0 opacity-90"></canvas>
       <div class="relative z-[2] text-center w-full px-10">
         <img class="w-[min(200px,50vw)] h-auto mx-auto mb-4 block mix-blend-screen drop-shadow-[0_0_38px_rgba(0,196,255,.45)]" src="assets/nexus-logo.png" alt="NEXUS AIO — ecosistema todo-en-uno" />
         <div class="inline-flex items-center gap-[10px] border border-cyan/16 rounded-full px-[14px] py-1.5 bg-cyan/[.05] backdrop-blur-sm mb-4">
@@ -94,11 +94,10 @@
           <span class="font-orb text-[9px] tracking-[3px] text-[#7fd8f5] border border-cyan/16 rounded px-2 py-1 bg-cyan/[.03]">EVA · IA</span>
         </div>
       </div>
-      <div class="absolute bottom-[26px] left-1/2 -translate-x-1/2 z-[3] flex items-center gap-2 font-exo text-[11px] tracking-[3px] uppercase text-cyan drop-shadow-[0_0_10px_rgba(0,196,255,.6)]">Scroll&nbsp;<span class="inline-block animate-[scrollBounce_2s_ease-in-out_infinite]">↓</span></div>
     </header>
 
     <!-- CONVERGENCIA -->
-    <section class="py-[clamp(80px,11vw,150px)] relative bg-gradient-to-b from-nx-black via-[#03101f] to-nx-black" id="conv">
+    <section class="py-[clamp(80px,11vw,150px)]" id="conv">
       <div class="w-full px-10">
         <div class="text-center max-w-[780px] mx-auto reveal">
           <span class="font-exo text-xs font-bold tracking-[5px] uppercase text-cyan">El ecosistema</span>
@@ -183,7 +182,7 @@
     </section>
 
     <!-- REAL WORLD -->
-    <section class="py-[clamp(80px,11vw,150px)] relative bg-[radial-gradient(800px_500px_at_85%_10%,rgba(0,27,61,.7),transparent_60%)]" id="real">
+    <section class="py-[clamp(80px,11vw,150px)] relative" id="real">
       <div class="w-full px-10 grid grid-cols-[1.05fr_.95fr] gap-[54px] items-center max-[880px]:grid-cols-1 max-[880px]:gap-[34px]">
         <div class="reveal">
           <span class="font-exo text-xs font-bold tracking-[5px] uppercase text-cyan">El método Nexus</span>
@@ -204,7 +203,7 @@
     </section>
 
     <!-- EVA -->
-    <section class="py-[clamp(80px,11vw,150px)] relative text-center bg-gradient-to-b from-nx-black via-[#04101e] to-nx-black" id="eva">
+    <section class="py-[clamp(80px,11vw,150px)] relative text-center" id="eva">
       <div class="w-full px-10">
         <div class="eva-orb w-[120px] h-[120px] mx-auto mb-[30px] rounded-full relative bg-[radial-gradient(circle_at_50%_40%,rgba(0,196,255,.35),rgba(0,27,61,.7))] shadow-[0_0_80px_rgba(0,196,255,.4),inset_0_0_50px_rgba(0,196,255,.2)] animate-[breathe_2.5s_ease-in-out_infinite] reveal"></div>
         <div class="reveal">
@@ -218,7 +217,7 @@
     <!-- CTA -->
     <section class="py-[clamp(80px,11vw,150px)] relative" id="cta">
       <div class="w-full px-10">
-        <div class="cta-box rounded-[20px] py-[clamp(30px,5vw,50px)] px-[clamp(30px,5vw,50px)] text-center overflow-hidden bg-gradient-to-br from-[#03142a] to-[#061f3d] border border-[rgba(0,196,255,.25)] reveal max-w-[700px] mx-auto">
+        <div class="cta-box rounded-[20px] py-[clamp(30px,5vw,50px)] px-[clamp(30px,5vw,50px)] text-center overflow-hidden border border-[rgba(0,196,255,.25)] reveal max-w-[700px] mx-auto bg-[rgba(13,28,48,.55)] backdrop-blur-md">
           <span class="font-exo text-xs font-bold tracking-[5px] uppercase text-cyan">Empieza hoy</span>
           <h2 class="font-exo font-extrabold text-[clamp(1.3rem,3vw,2rem)] text-white mb-3">Llevá tu empresa al <span class="bg-gradient-to-r from-white via-[#9fe9ff] to-cyan bg-clip-text text-transparent">siguiente sistema.</span></h2>
           <p class="text-[#a9c0d4] mb-5 font-light text-[.92rem]">Solicitá una demo y descubrí cómo se siente operar todo tu negocio desde un solo lugar.</p>
@@ -231,7 +230,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-[#03080f] text-white py-14 px-10 font-['Inter']">
+    <footer id="footer" class="bg-[#03080f] text-white py-14 px-10 font-['Inter']">
       <div class="max-w-6xl mx-auto">
         <div class="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 mb-10 max-[880px]:grid-cols-2 max-[500px]:grid-cols-1">
           <div class="max-w-[280px]">
